@@ -1,0 +1,1 @@
+[13-May-2023 17:22:26 UTC] PHP Fatal error:  Trait 'App\Models\Notifiable' not found in /home/cyi0hvb6w0hk/public_html/happyhours/app/Models/Listuser.php on line 10

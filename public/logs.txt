@@ -1,0 +1,14 @@
+POST /api/Flogin HTTP/1.1
+Accept:          */*
+Accept-Encoding: gzip, deflate, br
+Cache-Control:   no-cache
+Connection:      keep-alive
+Content-Length:  282
+Content-Type:    application/json
+Host:            127.0.0.1:8000
+Postman-Token:   f4770cc1-b249-4ca9-a7ed-68d5cacd7ed7
+User-Agent:      PostmanRuntime/7.29.2
+
+{
+    "token" : "EAAzVLXp7iNIBAPtYJOCZAZCzJHkw8dNDW1rlUJZBl7LXZBhTmxEkzfscpHS2ixlXZCGjK2f4ZBatxghtRXyE8ouu0qrTmoBDHcZCTXTp5RZC9ltz8ZBkKvBZAyMvDlZAl8a00FOH8vC706rZBbZCSZCYCZC5U5FhrFo6IZCkX9LrnOxG8DIij1wyX8f01ahjunVMTciMupXPHiV3rNE3e1Sm4nt11jZBUV87E4WsDEQS33OhDR7BzHZBNsusQZArME1"
+}
