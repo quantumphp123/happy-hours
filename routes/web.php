@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/clear', function () {
-    
+
     // $command = 'composer dump-autoload';
 
     // // Split the command into an array of arguments
@@ -42,7 +42,7 @@ Route::get('/clear', function () {
     // if (!$process->isSuccessful()) {
     //     return 'An error occurred while running the Composer command: '.$process->getExitCode();
     // }
-    
+
     // $command = 'composer dump-autoload -o';
 
     // // Split the command into an array of arguments
@@ -82,6 +82,9 @@ Route::get('/privacy-policy', function () {
 Route::get('/terms-conditions', function () {
     return view('Website.terms_and-condition');
 });
+
+Route::get('/contact', [App\Http\Controllers\ContactUsController::class, 'create'])->name('contact.create');
+Route::post('/contact', [App\Http\Controllers\ContactUsController::class, 'store'])->name('contact.store');
 Route::get('admin-login', [App\Http\Controllers\AdminController::class, 'index'])->name('admin-login');
 // Route::get('generate-pdf', [App\Http\Controllers\AdminController::class, 'generatePDF'])->name('generate-pdf');
 Route::post('admin-login-post', [App\Http\Controllers\AdminController::class, 'login_post'])->name('admin-login-post');
@@ -90,7 +93,7 @@ Route::post('admin-login-post', [App\Http\Controllers\AdminController::class, 'l
 Route::group(['middleware'=>['adminBasicAuth']],function(){
 
     Route::get('admin-dashboard', [App\Http\Controllers\AdminController::class, 'admin_dashboard'])->name('admin-dashboard');
-    
+
     /**user routes starts here*/
     Route::get('users', [App\Http\Controllers\AdminController::class, 'users'])->name('users');
     Route::get('viewUser/id/{id}', [App\Http\Controllers\AdminController::class, 'viewUser'])->name('viewUser');
@@ -98,7 +101,7 @@ Route::group(['middleware'=>['adminBasicAuth']],function(){
     Route::get('add-user', [App\Http\Controllers\AdminController::class, 'add_user'])->name('add-user');
     Route::post('post-add-user', [App\Http\Controllers\AdminController::class, 'post_add_user'])->name('post-add-user');
     /**user routes ends here*/
-    
+
     /**category routes starts here */
     Route::get('category', [App\Http\Controllers\AdminController::class, 'category'])->name('category');
     Route::get('add-category', function () {
@@ -107,7 +110,7 @@ Route::group(['middleware'=>['adminBasicAuth']],function(){
     Route::post('post-add-category', [App\Http\Controllers\AdminController::class, 'postCategory'])->name('postCategory');
     Route::get('deleteCategory/id/{id}', [App\Http\Controllers\AdminController::class, 'deleteCategory'])->name('deleteCategory');
     /**category routes ends here */
-    
+
     /**business routes starts here */
     Route::get('places', [App\Http\Controllers\AdminController::class, 'places'])->name('places');
     Route::get('add-place', [App\Http\Controllers\AdminController::class, 'addPlace'])->name('addPlace');
@@ -116,14 +119,14 @@ Route::group(['middleware'=>['adminBasicAuth']],function(){
     Route::get('search/places', [App\Http\Controllers\AdminController::class, 'searchPlaces'])->name('search-places');
     Route::get('show/{id}', [App\Http\Controllers\AdminController::class, 'viewPlace'])->name('admin.place.show');
     /**business routes ends here */
-    
+
     Route::post('change-status', [App\Http\Controllers\AdminController::class, 'change_status'])->name('change-status');
-    
+
     /**review routes starts here */
     Route::get('reviews/{placeId}', [App\Http\Controllers\AdminController::class, 'reviews'])->name('reviews');
     Route::get('deleteReview/{id}/placeId/{placeId}', [App\Http\Controllers\AdminController::class, 'deleteReview'])->name('deleteReview');
     /**review routes ends here */
-    
+
     Route::get('userModalContent/{id}', [App\Http\Controllers\AdminController::class, 'userModalContent'])->name('userModalContent');
 
 });
@@ -173,7 +176,7 @@ Route::group(['prefix'=>'user'], function(){
         Route::post('location/post', [UserController::class, 'PostLoaction'])->name('LocationPost');
 
         Route::get('logout', [UserController::class, 'logout'])->name('User.logout');
-      
+
         Route::get('details',[UserController::class, 'UserDetails'])->name('user.details');
         Route::post('details',[UserController::class, 'UserDetailsUpdate'])->name('details.update');
         });
