@@ -23,13 +23,13 @@ class ApiController extends Controller
 {
     public function signup(Request $request)
     {
-        
+
         try {
             $validatedData = $request->validate([
                 'firstName' => 'required|string',
                 'email' => 'required|string|email|max:255|unique:users',
-                'mobile' => 'required|numeric|digits:10|unique:users',
-                'dateOfBirth' => 'required|date',
+                'mobile' => 'nullable|numeric|digits:10|unique:users',
+                'dateOfBirth' => 'nullable|date',
                 'password' => 'required|string | min:6',
             ]);
         } catch (ValidationException $e) {
@@ -40,7 +40,7 @@ class ApiController extends Controller
                 'responseMessage' => $firstError,
             ]);
         }
-        
+
         $user = Listuser::create([
             'firstName' => $request->firstName,
             'lastName' => $request->lastName,
@@ -49,7 +49,7 @@ class ApiController extends Controller
             'dateOfBirth' => $request->dateOfBirth,
             'password' => Hash::make($request->password),
         ]);
-        
+
         if ($user) {
             return response()->json([
                 'responseCode' => 200,
@@ -62,7 +62,7 @@ class ApiController extends Controller
             ]);
         }
     }
-    
+
     public function login(Request $request)
     {
         try {
@@ -76,16 +76,16 @@ class ApiController extends Controller
                 'responseMessage' => $e->errors(),
             ]);
         }
-        
+
         if (!Auth::guard('listusers')->attempt($credentials)) {
             return response()->json([
                 'responseCode' => 401,
                 'responseMessage' => 'Invalid email or password',
             ]);
         }
-        
+
         $user = Auth::guard('listusers')->user();
-        
+
         $token = $user->createToken('api-token')->plainTextToken;
         $data['user'] = $user;
         $data['token'] = $token;
@@ -95,7 +95,7 @@ class ApiController extends Controller
                 'data' => $data,
             ]);
     }
-    
+
     public function getProfile(Request $request)
     {
         $data = Listuser::where('id', $request->user_id)->get();
@@ -116,7 +116,7 @@ class ApiController extends Controller
                 200);
         }
     }
-    
+
     public function updateProfile(Request $request)
     {
         $user = Listuser::find($request->userId);
@@ -167,7 +167,7 @@ class ApiController extends Controller
             ]);
         }
     }
-    
+
     //-----------------------------------------Gurman---------------------------------------------------------------//
 public function homepage(Request $request)
 {
@@ -224,7 +224,7 @@ public function homepage(Request $request)
     }
 }
 
-    
+
     public function AvgRating($id)
     {
         $place = Review::where('placeId', $id)->pluck('rating');
@@ -240,7 +240,7 @@ public function homepage(Request $request)
         }
         return number_format((float) ($count / $reviews), 1, '.', ',');
     }
-    
+
     public function placeDetail(Request $request)
     {
         $userId = $request->userId;
@@ -289,7 +289,7 @@ public function homepage(Request $request)
             ]);
         }
     }
-    
+
     public function addReview(Request $request)
     {
         $userId = $request->userId;
@@ -323,7 +323,7 @@ public function homepage(Request $request)
             );
         }
     }
-    
+
     public function placeReviews(Request $request)
     {
         $placeId = $request->placeId;
@@ -346,7 +346,7 @@ public function homepage(Request $request)
             ]);
         }
     }
-    
+
     public function addToFavourite(Request $request)
     {
         $placeId = $request->placeId;
@@ -379,7 +379,7 @@ public function homepage(Request $request)
             ]);
         }
     }
-    
+
     public function removeFromFavourite(Request $request)
     {
         $placeId = $request->placeId;
@@ -402,7 +402,7 @@ public function homepage(Request $request)
             ]);
         }
     }
-    
+
     public function getFavourite(Request $request)
     {
         $userId = $request->userId;
@@ -430,13 +430,13 @@ public function homepage(Request $request)
             ]);
         }
     }
-    
+
     ############ NEW ###########
     public function notification(Request $request)
     {
         $userId = auth()->user()->id;
         $favouritePlaceIds = Favourite::where('userId', $userId)->pluck('placeId')->toArray();
-    
+
         $notifications = Notification::with(['place' => function ($query) {
             $query->select(['id', 'placeName']); // Specify the desired fields from the place table
         }])->whereIn('placeId', $favouritePlaceIds)
@@ -447,10 +447,10 @@ public function homepage(Request $request)
             unset($notification['place']);
             return $notification;
         });
-            
-        
-        
-    
+
+
+
+
         if ($notifications->isNotEmpty()) {
             return response()->json([
                 'responseCode' => 200,
@@ -487,7 +487,7 @@ public function homepage(Request $request)
     //             $notis[]=$data[$i][$j];
     //         }
     //     }
-        
+
     //     if (count($data) > 0) {
     //         return response()->json(
     //             [
@@ -504,7 +504,7 @@ public function homepage(Request $request)
     //         ]);
     //     }
     // }
-    
+
     public function placesWithOffers(Request $request)
     {
         $location = $request->location;
@@ -567,7 +567,7 @@ public function homepage(Request $request)
             ]);
         }
     }
-    
+
     public function updatePass(Request $request)
     {
         try {
@@ -582,7 +582,7 @@ public function homepage(Request $request)
                 'responseMessage' => $e->errors(),
             ]);
         }
-        
+
         $user = Auth::user();
         if(Hash::check($request->current_password, $user->password)){
             if($request->new_password != $request->confirm_password){
@@ -610,7 +610,7 @@ public function homepage(Request $request)
             ]);
         }
     }
-    
+
     public function filter(Request $req)
     {
         // Retrieve filter parameters from the request
@@ -620,45 +620,45 @@ public function homepage(Request $request)
         // dd($rating);
         // Start building the query for items
         $query = Places::query();
-        
+
         // Apply category filter if provided
         if ($category != null && $rating != '') {
             $query->whereHas('categories', function ($query) use ($category) {
                 $query->where('category.categoryName', $category);
             });
         }
-        
-        
+
+
         // Apply location filter if provided
         if($location != null && $rating != ''){
             $query->where('location', 'like', '%' . $location . '%');
         }
-        
+
         // Apply rating filter if provided
         if($rating != null && $rating != 0 && $rating != ''){
             $query->where('ratings', '<=', $rating);
         }
-        
+
         // Retrieve the filtered items with their associated categories
         $places = $query->with('categories')->get();
-        
+
         ### For Test Services ###
         // $places = $places->map(function($place){
         //      $data = [
-        //         'location' => $place->location,              
+        //         'location' => $place->location,
         //         'rating' => $place->ratings,
         //         'category' => $place->categories->where('categoryName', 'Bar'),
         //          ];
         //      return $data;
         // });
-        
+
         return response()->json([
                 'responseCode' => 200,
                 'responseMessage' => 'success',
                 'places' => $places,
             ]);
     }
-    
+
     public function ForgotPass_otp(request $req)
     {
         $user = Listuser::where('email', $req->email)->first();
@@ -672,7 +672,7 @@ public function homepage(Request $request)
             $otp = str_pad(rand(0, pow(10, $digits) - 1), $digits, '0', STR_PAD_LEFT);
             $user->otp = $otp;
             $user->save();
-            
+
             $details = [
                 'title' => 'Mail from Happy hours',
                 'body' => 'Use this OTP to  Reset Your password',
@@ -680,14 +680,14 @@ public function homepage(Request $request)
             ];
 
             \Mail::to($req->email)->send(new \App\Mail\ForgotPass($details));
-            
+
             return response()->json([
                 'responseCode' => 200,
                 'responseMessage' => 'Email sent',
             ]);
         }
     }
-    
+
     public function verify_otp(request $req)
     {
         $data = Listuser::where('email', $req->email)->get();
@@ -704,7 +704,7 @@ public function homepage(Request $request)
             ]);
         }
     }
-    
+
     public function changepassword(request $request)
     {
         $data = Listuser::where('email', $request->email)->get();
@@ -734,7 +734,7 @@ public function homepage(Request $request)
             ]);
         }
     }
-    
+
     public function ViewAllCategory(request $req)
     {
         $category_id = Category::where('categoryName', $req->CategoryName)->pluck('id');
@@ -761,7 +761,7 @@ public function homepage(Request $request)
             ]);
         }
     }
-    
+
     public function DeleteAccount(request $req)
     {
         $user = Listuser::find($req->userId);
@@ -786,7 +786,7 @@ public function homepage(Request $request)
             ]);
         }
     }
-    
+
     public function getPlaces(){
         $places = Places::all()->sortBy('created_at')->toArray();
         return response()->json([
@@ -795,20 +795,35 @@ public function homepage(Request $request)
                 'places' => $places,
             ]);
     }
-    
+
     public function getCategoryList(){
         // $categories = Category::all()->sortBy('categoryName')
         // ->map(function($category){
-        //     $data['id'] = $category->id; 
+        //     $data['id'] = $category->id;
         //     $data['name'] = $category->categoryName;
         //     return $data;
         // });
         $categories = Category::all(['id', 'categoryName'])->toArray();
-        
+
         return response()->json([
                 'responseCode' => 200,
                 'responseMessage' => 'success',
                 'categories' => $categories,
             ]);
+    }
+
+    public function destroy($id)
+    {
+        // Find the user by id
+        $user = Listuser::find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        // Delete the user
+        $user->delete();
+
+        return response()->json(['message' => 'User deleted successfully']);
     }
 }

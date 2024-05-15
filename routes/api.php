@@ -28,7 +28,7 @@ Route::post('Flogin',[App\Http\Controllers\API\SocialController::class,'Flogin']
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('places', [ApiController::class, 'getPlaces'])->name('getPlaces');
     Route::post('getProfile', [ApiController::class, 'getProfile'])->name('getProfile');
-    Route::post('updateProfile', [ApiController::class, 'updateProfile'])->name('updateProfile');    
+    Route::post('updateProfile', [ApiController::class, 'updateProfile'])->name('updateProfile');
     Route::post('placeDetail', [ApiController::class, 'placeDetail'])->name('placeDetail');
     Route::post('addReview', [ApiController::class, 'addReview'])->name('addReview');
     Route::post('placeReviews', [ApiController::class, 'placeReviews'])->name('placeReviews');
@@ -44,4 +44,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('ViewAllCategory',[ApiController::class, 'ViewAllCategory']);
 
     Route::post('DeleteAccount',[ApiController::class, 'DeleteAccount']);
+    Route::delete('/users/{id}', [ApiController::class, 'destroy']);
+
 });
