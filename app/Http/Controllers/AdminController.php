@@ -33,7 +33,7 @@ class AdminController extends Controller
     {
         return view('admin.login');
     }
-    
+
     public function searchPlaces(Request $request)
     {
         $searchTerm = $request->search;
@@ -50,7 +50,7 @@ class AdminController extends Controller
                 })
                 ->orderBy('id', 'desc')
                 ->paginate(10);
-    
+
             if ($places->count() > 0) {
                 return view('admin.places.index', compact('places', 'searchTerm'));
             }else{
@@ -62,7 +62,7 @@ class AdminController extends Controller
         return redirect()->route('places')->with('error', $error);
     }
 
-	
+
 	public function login_post(Request $request)
 	{
 		$credentials = $request->only('email','password');
@@ -87,7 +87,7 @@ class AdminController extends Controller
 			return back()->with('err_msg','Invalid Username or Password.');
 		}
 	}
-	
+
 	public function admin_dashboard()
     {
         $places=Places::count();
@@ -103,32 +103,32 @@ class AdminController extends Controller
 
        return view('admin.dashboard',compact('data'));
     }
-	
+
 	/**users starts here */
 	public function users()
     {
 		$data=Listuser::orderby('id','desc')->get();
-		
+
        return view('admin.professional.index',['data' => $data]);
     }
-	
+
 	public function add_user()
     {
        return view('admin.professional.add');
     }
-	
+
 	public function post_add_user(Request $request)
-	{ 	
-	
+	{
+
 	$validator = Validator::make($request->all(), [
             'email' => 'required|unique:users',
-            'mobile' => 'required|unique:users|numeric|digits:12',
+            'mobile' => 'required|unique:users|numeric|digits:10',
         ]);
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator);
         }
-		
+
 		$create = Listuser::insert([
             "firstName" => $request->fname,
             "lastName" => $request->lname,
@@ -155,14 +155,14 @@ class AdminController extends Controller
 	   	return redirect()->route('users');
 	}
 
-	
+
 	public function viewUser($id)
     {
-		$data = Listuser::find($id);        
+		$data = Listuser::find($id);
 		// return $data;
 	    return view('admin.professional.detail',['data' => $data]);
 	}
-	
+
 	/**users ends here */
 
 
@@ -188,7 +188,7 @@ class AdminController extends Controller
 
         \Session::put('success',$msg);
         return redirect()->route('category');
-        
+
     }
 
     public function deleteCategory($id)
@@ -199,7 +199,7 @@ class AdminController extends Controller
         } else {
             $msg = "Some error occured";
         }
-        
+
         \Session::put('success',$msg);
         return redirect()->route('category');
 
@@ -212,11 +212,11 @@ class AdminController extends Controller
         $places = Places::orderBy('id','desc')->paginate(10);
         return view('admin.places.index', compact('places'));
     }
-    
+
     public function viewPlace($id)
     {
         $data=Places::with('categories')->find($id);
-        $availibilty=User_availability::where('user_id',$id)->get(['start','end','day','is_open']);   
+        $availibilty=User_availability::where('user_id',$id)->get(['start','end','day','is_open']);
 
         return view('admin.places.Detail', compact('data','availibilty'));
 
@@ -225,7 +225,7 @@ class AdminController extends Controller
     public function addPlace()
     {
         $categories = Category::pluck('categoryName','id');
-        
+
         return view('admin.places.add', ['categories' => $categories]);
     }
 
@@ -266,7 +266,7 @@ class AdminController extends Controller
             'business_owner_name' => 'required',
             'business_owner_type' => 'required',
         ]);
-        
+
         $address = $req->streetnumber . ' ' . $req->streetname . ' ' . $req->city . ' ' . $req->landmark . ' ' . $req->zipcode;
         $baseurl = url('/');
         if ($req->image != null) {
@@ -292,18 +292,18 @@ class AdminController extends Controller
 
         $categoryName = Category::where('id', $req->category)->pluck('categoryName');
 
-        
+
         // Generate a random password with uppercase letters, lowercase letters, numbers, and symbols in random order
         $uppercase = Str::random(2, 'uppercase');
         $lowercase = Str::random(2, 'lowercase');
         $numeric = Str::random(2, 'numeric');
         $special = Str::random(2, 'special');
-        
+
         // Generate a random password with uppercase letters, lowercase letters, numbers, and symbols in random order
         $characters = $uppercase . $lowercase . $numeric . $special;
         $password = str_shuffle($characters);
 
-        
+
         $place = new Places();
         //$place->categoryId=$req->category;
         //$place->categoryName=$categoryName[0];
@@ -329,14 +329,14 @@ class AdminController extends Controller
         $place->description = $req->desc;
         $place->password = Hash::make($password);
         $place->save();
-        
+
         $categoryids = $req->category;
-        
+
         $place->categories()->attach($categoryids);
         $details['email'] = $place->email;
         $details['password'] = $password;
         \Mail::to($place->email)->send(new \App\Mail\SendPassword($details));
-        
+
         return redirect()->route('places');
     }
 
@@ -358,9 +358,9 @@ class AdminController extends Controller
             $str = $data->image;
             $storage =  unlink($new_image);
                $data->delete();
-           
+
            }
-         
+
 
         }
 
@@ -382,7 +382,7 @@ class AdminController extends Controller
     }
 
     /**business ends here */
-	
+
 	/**reviews starts here */
 
     public function reviews($placeId)
@@ -403,7 +403,7 @@ class AdminController extends Controller
         } else {
             $msg = "Some error occured";
         }
-        
+
         \Session::put('success',$msg);
         return redirect()->route('reviews', ['placeId' => $placeId]);
     }
@@ -418,7 +418,7 @@ class AdminController extends Controller
 	Session::flush();
 	return redirect(url('admin-login'));
 	}
-	
+
     public function create()
     {
         //

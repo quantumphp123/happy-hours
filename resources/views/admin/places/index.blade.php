@@ -6,13 +6,13 @@
       display: inline-block;
       width: 50px;
       height: 24px;
-      
+
     }
-    
+
     .switch input {
       display: none;
     }
-    
+
     .slider {
       position: absolute;
       cursor: pointer;
@@ -24,7 +24,7 @@
       transition: 0.4s;
       border-radius:20px;
     }
-    
+
     .slider:before {
       position: absolute;
       content: "";
@@ -35,20 +35,20 @@
       background-color: white;
       transition: 0.4s;
     }
-    
+
     input:checked + .slider {
       background-color: #2196F3;
     }
-    
+
     input:checked + .slider:before {
       transform: translateX(26px);
     }
-    
+
     /* Optional: Customize the appearance */
     .slider:before {
       border-radius: 50%;
     }
-    
+
     .slider:after {
       color: white;
       display: flex;
@@ -106,14 +106,14 @@
                                         </h3>
                                     </div>
                                 </div>
-                                
+
 
                                 @if (isset($searchTerm))
                                     <p class="ms-2">Search result for: <i class="text-primary">{{ $searchTerm }}</i></p>
                                 @endif
                             </div>
                             <!-- /.card-header -->
-                            
+
                             @php
                                 $startSerial = ($places->currentPage() - 1) * $places->perPage() + 1;
                             @endphp
@@ -157,7 +157,7 @@
                                                             <a href="{{ route('admin.place.show', ['id' => $place->id]) }}" role="button" class="btn btn-sm btn-warning mx-2 text-white">
                                                                 <i class="bi bi-eye-fill"></i>
                                                             </a>
-                                                            <a href="{{ route('deletePlace', ['id' => $place->id]) }}" role="button" class="btn btn-sm btn-danger mx-2" onclick="return confirm('Are you sure?')">
+                                                            <a href="{{ route('deletePlace', ['id' => $place->id]) }}" role="button" class="btn btn-sm btn-danger mx-2" onclick="return confirm('Are you sure want to delete?')">
                                                                 <i class="bi bi-trash-fill"></i>
                                                             </a>
                                                             <a href="{{ route('reviews', ['placeId' => $place->id]) }}" role="button" class="btn bg-gradient-info btn-sm">
@@ -167,9 +167,9 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-    
+
                                         </tbody>
-    
+
                                     </table>
                                     <div class="d-flex  align-items-center justify-content-center"
                                         <div class="pagination">

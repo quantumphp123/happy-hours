@@ -1,7 +1,7 @@
 @extends('admin.layout.layout')
 @section('content')
   <div class="content-wrapper">
-  
+
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -17,7 +17,7 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-	
+
 	@if (session('success'))
 	<div class="card-body">
 	<div class="alert alert-success alert-dismissible">
@@ -27,15 +27,15 @@
 	</div>
     </div>
 	@endif
-	
-	
-	
+
+
+
 	 <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-		  
-		
+
+
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title"><a href="{{url('add-user')}}"><button type="button" class="btn btn-block bg-gradient-primary">Add User</button></a></h3>
@@ -63,8 +63,8 @@
                       <td> {{$rows->lastName}} </td>
                       <td> {{$rows->email}} </td>
                       <td> {{$rows->mobile}} </td>
-                      <td>  
-                                <button  class="btn btn-primary" type="button" data-toggle="modal" data-target="#userDetail{{$i}}" >  
+                      <td>
+                                <button  class="btn btn-primary" type="button" data-toggle="modal" data-target="#userDetail{{$i}}" >
                                     <i class="fa fa-eye"></i>
                                 </button>
                                 <!-- Modal -->
@@ -87,20 +87,20 @@
                                               <p>
                                                 Last Name: {{$rows->lastName}}
                                               </p>
-                                              
+
                                             </div>
                                           </div>
                                         </div>
                                       </div>
-                                      <div class="modal-footer">
+                                      {{-- <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         <button type="button" class="btn btn-primary">Save changes</button>
-                                      </div>
+                                      </div> --}}
                                     </div>
                                   </div>
                                 </div>
 
-                            <a href="{{ route('deleteUser', ['id' => $rows->id] ) }}"  onclick="return confirm('are you sure?')">
+                            <a href="{{ route('deleteUser', ['id' => $rows->id] ) }}"  onclick="return confirm('Are you sure want to delete?')">
                                 <button class="btn btn-danger" type="button">
                                     <i class="fa fa-trash"></i>
                                 </button>
@@ -109,7 +109,7 @@
                     </tr>
                     <?php $i++; ?>
                     @endforeach
-                  
+
                   </tbody>
                   <tfoot>
                    <tr>
@@ -128,14 +128,14 @@
               </div>
               <!-- /.card-body -->
             </div>
-			
-			
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
+
+
             <!-- /.card -->
           </div>
           <!-- /.col -->
@@ -144,9 +144,9 @@
       </div>
       <!-- /.container-fluid -->
     </section>
-	
-	
-  
-  
+
+
+
+
    </div>
   @endsection

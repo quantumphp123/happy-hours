@@ -2,7 +2,7 @@
 @extends('User.layout.layout')
 @section('content')
 <style>
-    
+
     .img{
         width:200px;
     }
@@ -48,10 +48,11 @@
                                         <strong style="color:#212529">Business Phone</strong>
                                         <p class="float-right text-primary">{{ $data->mobile }}</p>
                                     </li>
-                                    <li class="list-group-item">
-                                        <b style="color:#212529">Business Email</b>
-                                        <p class="float-right text-primary">{{ $data->email }}</p>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <b style="color:#212529; white-space: nowrap;">Business Email</b>
+                                        <p class="text-primary mb-0 text-wrap" style="margin-left: 10px;">{{ $data->email }}</p>
                                     </li>
+
                                     <li class="list-group-item">
                                         <b style="color:#212529">Ratings</b>
                                         <p class="float-right text-primary">{{ $data->ratings }}/5</p>
@@ -105,9 +106,9 @@
                                 </ul>
                             </div>
                             <div class="card-body">
-                                
+
                                 <div class="tab-content">
-                                  
+
                                     <div class="tab-pane active" id="activity">
                                         @if(count($images))
                                         <div class="post">
@@ -149,7 +150,7 @@
 
                                             </div>
 
-                                           
+
                                         </div>
 @endif
                                     </div>
