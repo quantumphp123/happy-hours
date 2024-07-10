@@ -92,13 +92,17 @@
                                         <div class="search-container mb-3">
                                             <div class="col-xl-12">
                                                 <form action="{{ route('search-places') }}" method="GET" role="search" class="d-flex">
-                                                    <input type="text" placeholder="Search..." name="search" class="form-control">
+                                                    <input type="text" placeholder="Search..." name="search" class="form-control" id="search-input">
                                                     <button type="submit" class="btn btn-primary ml-2">
                                                         <i class="fa fa-search fa-sm"></i>
                                                     </button>
+                                                    <a href="{{url('places')}}"  type="button" class="btn btn-secondary ml-2" id="clear-btn">
+                                                        <i class="fa fa-times fa-sm"></i>
+                                                    </a>
                                                 </form>
                                             </div>
                                         </div>
+
                                         <h3 class="card-title">
                                             <a href="{{ url('add-place') }}">
                                                 <button type="button" class="btn btn-success bg-gradient-success"><i class="bi bi-plus-circle-fill"></i>&nbsp;Add Place</button>

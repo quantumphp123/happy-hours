@@ -705,35 +705,48 @@ public function homepage(Request $request)
         }
     }
 
-    public function changepassword(request $request)
-    {
-        $data = Listuser::where('email', $request->email)->get();
-        //return $data;
-        $user = $data['0'];
-        //return $user;
-        if ($request->new_password == $request->confirm_password) {
-            if (Hash::check($request->new_password, $user->password)) {
-                //Current password and new password are same
-                return response()->json([
-                    'responseCode' => 401,
-                    'responseMessage' => 'New Password cannot be same as your current password. Please choose a different password.',
-                ]);
-            }
-            //Change Password
-            //$user = Auth::user();
-            $user->password = Hash::make($request->new_password);
-            $user->save();
-            return response()->json([
-                'responseCode' => 200,
-                'responseMessage' => 'Password Changed Successfully',
-            ]);
-        } else {
+    public function changepassword(Request $request)
+{
+    // Validate the required fields
+    $request->validate([
+        'email' => 'required|email',
+        'new_password' => 'required|string|min:8',
+        'confirm_password' => 'required|string|min:8',
+    ]);
+
+    $data = Listuser::where('email', $request->email)->get();
+    if ($data->isEmpty()) {
+        return response()->json([
+            'responseCode' => 404,
+            'responseMessage' => 'User not found.',
+        ]);
+    }
+
+    $user = $data['0'];
+
+    if ($request->new_password == $request->confirm_password) {
+        if (Hash::check($request->new_password, $user->password)) {
+            // Current password and new password are same
             return response()->json([
                 'responseCode' => 401,
-                'responseMessage' => 'Password and Confirm Password Do not Match!',
+                'responseMessage' => 'New Password cannot be the same as your current password. Please choose a different password.',
             ]);
         }
+        // Change Password
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+        return response()->json([
+            'responseCode' => 200,
+            'responseMessage' => 'Password Changed Successfully',
+        ]);
+    } else {
+        return response()->json([
+            'responseCode' => 401,
+            'responseMessage' => 'New password and confirm password must be the same!',
+        ]);
     }
+}
+
 
     public function ViewAllCategory(request $req)
     {
