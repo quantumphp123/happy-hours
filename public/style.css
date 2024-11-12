@@ -1,0 +1,844 @@
+<style>
+    /* All elements */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+/* heading */
+.heading {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: #f4b027;
+    /* margin-left: 80px; */
+    margin-top: 20px;
+}
+
+.heading_img {
+    width: 100%;
+}
+
+/* section1 :  Happy Calculator */
+
+.intro {
+    background: #1C1C1C;
+    color: white;
+    border-radius: 40px;
+    align-items: center;
+}
+
+.intro_title {
+    color: orange;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.intro_sub_title {
+    font-weight: 500;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.intro_details_col {
+    padding-left: 133px !important;
+}
+
+.iphone_img {
+    padding-left: 40px;
+    width: 100%;
+}
+
+.app_btns {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.app_btns a {
+    background: #313131;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+}
+
+.apple_icon {
+    margin-top: -4px;
+    margin-right: 7px;
+}
+
+.playstore_icon {
+    margin-right: 5px;
+}
+
+/* section2 : Subscribe */
+
+.subscribe {
+    align-items: center;
+}
+
+.subscribe_col {
+    padding-left: 133px !important;
+}
+
+.subscribe_title {
+    margin-bottom: 20px;
+    color: #39abff;
+    font-weight: 700;
+}
+
+.subscribe_description {
+    margin-bottom: 40px;
+}
+
+.subscription_price {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.subscription_description {
+    margin-top: 20px;
+}
+
+.subscribe_box {
+    background: #fff8e5;
+    border: 2px solid #ffdc7f;
+    border-radius: 20px;
+    padding: 25px 20px 20px 20px;
+    margin-right: 65px;
+}
+
+.subscribe_img {
+    padding: 15px;
+    background: url(/public/images/backgrounds/subscribe_star1.png), url(/public/images/backgrounds/subscribe_star2.png),
+        url(/public/images/backgrounds/subscribe_star3.png), url(/public/images/backgrounds/subscribe_star4.png);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: top right, left top, bottom right, bottom left;
+    padding-left: 20px;
+}
+
+.subscribe_img_col {
+    background: url(/public/images/backgrounds/subscibe.png);
+    background-position: center right;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+/* section3 : More Happiness Starts Here */
+
+.happiness {
+    background-color: #1C1C1C !important;
+    border-radius: 40px;
+    padding: 50px;
+    background: url(/public/images/backgrounds/btm-left.png) , url(/public/images/backgrounds/top-rgt.png),
+        url(/public/images/backgrounds//smile_emoji.png);
+    background-repeat: no-repeat;
+    background-position: bottom left, top right, top 200px right 180px;
+}
+
+.happiness_title {
+    color: #ffb800;
+    text-align: center;
+    font-weight: 700;
+}
+
+.happiness_sub_title {
+    font-weight: 700;
+    color: white;
+    text-align: center;
+}
+
+.happiness_description {
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding-left: 240px;
+    padding-right: 240px;
+}
+
+.happiness_img_col {
+    text-align: center;
+    background: url(/public/images/backgrounds/center-left.png);
+    background-repeat: no-repeat;
+    background-position: bottom 20px left 100px;
+}
+
+.happiness_img {
+    background: url(/public/images/backgrounds/happiness_star1.png), url(/public/images/backgrounds/happiness_star2);
+    background-position: top left, top right;
+    background-repeat: no-repeat;
+}
+
+/* section4 : Features */
+
+.feature_img_col {
+    text-align: center;
+}
+
+.features_section {
+    padding: 10px;
+    margin-top: 30px;
+}
+
+/* section5 : Process for Adding Activity */
+
+.process {
+    background: #1C1C1C;
+    border-radius: 40px;
+    background-image: url(/public/images/backgrounds/activity_adding.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    padding: 50px;
+    justify-content: center;
+}
+
+.process_title {
+    color: white;
+    text-align: center;
+    font-weight: 700;
+}
+
+.process_title_continued {
+    color: #22a2ff;
+    text-align: center;
+    font-weight: 700;
+}
+
+.process_description {
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+    font-weight: 300;
+}
+
+.process_grid {
+    margin-top: 230px !important;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    color: white;
+}
+
+.process_card {
+    border-radius: 20px;
+    border: 2px solid #856611;
+    padding: 20px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.process_card:hover {
+    border: 3px solid #f5d786;
+}
+
+.process_img {
+    margin-top: -189px;
+}
+
+.process_step {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px;
+    color: #ecc156;
+    margin-top: 25px;
+    font-weight: 700;
+}
+
+/* section6 : Process for Complete Activity */
+
+.process_two {
+    background: #EAEAEA;
+    border-radius: 40px;
+    background-image: url(/public/images/backgrounds/Ellipse.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top center;
+    padding: 50px;
+    justify-content: center;
+}
+
+.process_two .process_title {
+    color: black;
+}
+
+.process_two .process_title_continued {
+    color: #ffb800;
+}
+
+.process_two .process_description {
+    color: black;
+    font-weight: 400;
+}
+
+.process_two .process_step {
+    color: #70b8ec;
+}
+
+.process_two .process_grid {
+    color: black;
+}
+
+.process_two .process_card {
+    border-color: #62b8f7;
+}
+
+.process_two .process_card:hover {
+    border-color: #258ed9;
+}
+
+/* section7 : Happiness Score */
+
+.score {
+    justify-content: center;
+    background: url(/public/images/backgrounds/score.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top;
+}
+
+.score .col-12 {
+    text-align: center;
+    background: url(/public/images/backgrounds/score_star1.png), url(/public/images/backgrounds/score_star2.png);
+    background-repeat: no-repeat;
+    background-position: top right, bottom left;
+}
+
+.score_title {
+    font-weight: 700;
+}
+
+.score_title_continued {
+    color: #ffb800;
+    font-weight: 700;
+}
+
+.score_img_card_title {
+    color: #22a2ff;
+    font-weight: 600;
+}
+
+.score_grid {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 50px 0px 50px;
+}
+
+.score_description {
+    padding-left: 220px;
+    padding-right: 220px;
+    margin-top: 20px;
+}
+
+.score_img_card {
+    background: #dfdfdf5e;
+    border-radius: 25px;
+    margin-top: 20px
+}
+
+.score_img {
+    border-radius: 25px;
+    width: 100%;
+}
+
+/* section8 : Update or Cancel plan anytime */
+
+.plans {
+    background: #F4F4F4;
+    border-radius: 40px;
+    padding: 50px;
+    background: url(/public/images/backgrounds/plans.png);
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+.plans_title {
+    font-weight: 700;
+}
+
+.plans_title_continued {
+    color: #38a1ec;
+}
+
+.plans .col-12 {
+    text-align: center;
+}
+
+.plans_description {
+    padding-left: 240px;
+    padding-right: 240px;
+    margin-top: 20px;
+}
+
+.plans_grid {
+    gap: 25px;
+    justify-content: center;
+    text-align: center;
+    margin-top: 40px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.cancel_card {
+    border-radius: 20px;
+    border: 2px solid #fc6358;
+    padding: 30px !important;
+    background: #f5ecec;
+}
+
+.cancel_card:hover {
+    cursor: pointer;
+    border: 3px solid #f53f32;
+}
+
+.resume_card {
+    border-radius: 20px;
+    border: 2px solid #388ff0;
+    padding: 30px !important;
+    background: #e7ecf0;
+}
+
+.resume_card:hover {
+    cursor: pointer;
+    border: 3px solid #1971d5;
+}
+
+.cancel_sub_title {
+    color: #fc6358;
+    margin-bottom: 20px;
+}
+
+.resume_sub_title {
+    color: #3eadfc;
+    margin-bottom: 20px;
+}
+
+.cancel_plan_details {
+    text-align: left;
+    margin-bottom: 60px;
+}
+
+.resume_plan_details {
+    text-align: left;
+    margin-bottom: 80px;
+}
+
+/* section9 : Personalized Happiness Score */
+
+.personalized_score {
+    align-items: center;
+    justify-content: center;
+    padding: 0px 60px 50px 60px;
+}
+
+.personalized_description {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.highlighted_text {
+    color: #ffc225;
+}
+
+.personalized_score {
+    gap: 50px;
+}
+
+.personalized_score_img {
+    width: 100%;
+}
+
+.personalized_score_card {
+    background-color: #dfdfdf5e;
+    border-radius: 25px;
+    margin-top: 20px;
+}
+
+.personalized_card {
+    background: url(/public/images/backgrounds/personlaized_star1.png), url(/public/images/backgrounds/personlaized_star2.png),
+        url(/public/images/backgrounds/personlaized_star3.png);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: top right, bottom left, top left;
+}
+
+.highlighted_text_blue {
+    color: #64beff;
+}
+
+/* section10 : Manage Profile */
+.profile {
+    padding: 0px 50px 50px 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+}
+
+.profile_card {
+    background: url(/public/images/backgrounds/profile_star1.png), url(/public/images/backgrounds/profile_star2.png),
+        url(/public/images/backgrounds/profile_star3.png);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: top right, bottom left, top left;
+}
+
+.profile_img_card {
+    background-color: #dfdfdf5e;
+    border-radius: 25px;
+    margin-top: 20px;
+}
+
+.profile_img {
+    width: 100%;
+}
+
+/* section11 : Download */
+
+.download {
+    background-color: #1C1C1C !important;
+    color: white;
+    border-radius: 40px;
+    align-items: center;
+    background: url(/public/images/backgrounds/top-rgt.png), url(/public/images/backgrounds/btm-left.png),
+        url(/public/images/backgrounds/center-left.png), url(/public/images/backgrounds/center-right.png), url(/public/images/backgrounds/Ellipse2.png);
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position: top right, bottom left -170px, bottom 30px left 160px, center top 20px, center right 150px;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.download_img_col {
+    padding-top: 120px;
+    text-align: center;
+}
+
+.download_img {
+    border-radius: 20px;
+    background: url(/public/images/backgrounds/Ellipse.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+}
+
+.download_view {
+    background: url(/public/images/backgrounds/Ellipse.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+}
+
+
+
+/* footer */
+
+footer {
+    color: white;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 80px 50px 80px !important;
+}
+
+footer .heading {
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+.footer_description {
+    margin-top: 20px;
+    width: 60%;
+}
+
+.footer_links span {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.footer_links span a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.copyright-text {
+    font-weight: 600;
+}
+
+/* --- RESPONSIVENESS STARTS HERE --- */
+
+/* devices with width < 1400px */
+
+@media(max-width:1400px) {
+    .happiness_description {
+        padding: 0px 0px 0px 0px !important;
+    }
+
+    .feature_img {
+        width: 100%;
+    }
+
+    .score_description,
+    .plans_description {
+        padding: 0px 20px 0px 20px;
+    }
+}
+
+/* devices with width < 1200px */
+
+@media(max-width:1200px) {
+    .process_img {
+        width: 100%;
+    }
+
+    .resume_plan_details {
+        margin-bottom: 60px;
+    }
+
+    .download_img {
+        width: 100%;
+    }
+}
+
+/* devices with width < 992px */
+
+@media(max-width:992px) {
+    .intro {
+        flex-direction: column-reverse;
+        padding-bottom: 30px;
+    }
+
+    .subscribe {
+        flex-direction: column-reverse;
+    }
+
+    .iphone_img {
+        padding-left: 0px !important;
+    }
+
+    .intro_details_col {
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+
+    .heading {
+        margin-left: 0px;
+        justify-content: center;
+        font-size: 18px;
+    }
+
+    .subscribe_col {
+        padding-left: 0px !important;
+        padding-top: 30px;
+    }
+
+    .subscribe_img_col {
+        margin-top: 40px !important;
+    }
+
+    .subscribe_title {
+        text-align: center;
+    }
+
+    .subscribe_box {
+        margin-right: 0px;
+    }
+
+    .happiness_img {
+        width: 100%;
+    }
+
+    .feature_img,
+    .plan_img {
+        width: 100%;
+    }
+
+    .features_section {
+        margin-top: 50px !important;
+    }
+
+    .process_img {
+        width: 100%;
+    }
+
+    .plans {
+        padding: 40px 10px 20px 10px;
+    }
+
+    .plans_title {
+        text-align: center;
+    }
+
+    .personalized_score {
+        padding: 0px 10px 20px 10px;
+        gap: 30px;
+    }
+
+    .profile {
+        flex-direction: column-reverse;
+        gap: 30px;
+        padding: 0px 10px 20px 10px !important;
+    }
+
+    footer .heading {
+        justify-content: flex-start;
+    }
+
+}
+
+/* devices with width < 767px - TABLET*/
+
+@media (max-width:767px) {
+
+    .subscribe_box {
+        margin-right: 0px;
+    }
+
+    .download_img_col {
+        padding-top: 60px !important;
+    }
+
+    .download {
+        padding: 50px 50px 0px 50px;
+        gap: 20px;
+    }
+
+    footer {
+        flex-direction: column !important;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px !important;
+    }
+
+    .footer_description {
+        margin-top: 10px;
+        margin-bottom: 40px;
+        width: 100%;
+    }
+
+    footer .heading {
+        justify-content: center;
+    }
+}
+
+/* devices with width < 765px - TABLET*/
+
+@media(max-width:765px) {
+    .process_grid {
+        gap: 250px;
+    }
+
+    .score_grid {
+        gap: 30px;
+    }
+
+    .plans_grid {
+        gap: 50px
+    }
+}
+
+/* devices with width < 576px - MOBILE*/
+
+@media(max-width:576px) {
+    .intro {
+        margin: 10px !important;
+    }
+
+    .subscribe {
+        margin: 10px !important;
+        margin-top: 40px !important;
+    }
+
+    .subscribe_box {
+        margin-right: 0px;
+    }
+
+    .happiness {
+        margin: 10px !important;
+        margin-top: 40px !important;
+        padding: 30px 10px 30px 10px !important;
+    }
+
+    .features_section {
+        margin: 10px !important;
+    }
+
+    .features_section {
+        padding: 0px 0px 20px 0px;
+    }
+
+    .process {
+        margin: 10px !important;
+        padding: 30px 10px 30px 10px;
+    }
+
+    .process_two {
+        margin: 30px 10px 10px 10px !important;
+        padding: 30px 10px 30px 10px;
+    }
+
+    .score,
+    .plans {
+        margin: 50px 10px 10px 10px !important;
+    }
+
+    .plans_description {
+        padding: 0px 10px 0px 10px;
+    }
+
+    .personalized_score {
+        margin: 10px;
+    }
+
+    .download {
+        padding: 50px 10px 0px 10px;
+        margin: 0px 10px 40px 10px !important;
+    }
+}
+
+/* devices with width < 496px - MOBILE*/
+
+@media(max-width:496px) {
+    .subscribe_img {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}
+
+/* devices with width < 435px - MOBILE*/
+
+@media(max-width:435px) {
+    .app_btns {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .app_btns a {
+        width: 100%;
+    }
+}
+
+/* devices with width < 400px - MOBILE*/
+
+@media(max-width:400px) {
+    .subscribe_img {
+        width: 100%;
+    }
+}
+
+@media(min-width:678px){
+    .download .intro_description{
+        width: 70%;
+    }
+}
+
+    </style>

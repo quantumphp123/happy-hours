@@ -1,0 +1,4 @@
+[13-May-2023 17:22:26 UTC] PHP Fatal error:  Trait 'App\Models\Notifiable' not found in /home/cyi0hvb6w0hk/public_html/happyhours/app/Models/Listuser.php on line 10
+[13-May-2024 05:12:00 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/gi7cbsuu0y60/public_html/happyhours/app/Models/ContactUs.php on line 4
+[24-Jun-2024 04:12:58 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\API\ApiController::destroy() in /home/gi7cbsuu0y60/public_html/happyhours/app/Http/Controllers/API/ApiController.php on line 830
+[24-Jun-2024 04:13:28 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\API\ApiController::destroy() in /home/gi7cbsuu0y60/public_html/happyhours/app/Http/Controllers/API/ApiController.php on line 830
